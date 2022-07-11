@@ -1,0 +1,64 @@
+{% extends 'turnup/base.html' %}
+{%block title%}TurnUp | Home{% endblock %}
+{%block Content%}
+<div class="container-fluid p-0">
+  <div class="container index-flex">
+    <div class="card-container">
+      {% for p in papers%}
+      <!-- <a href="/home/{{p.url}}" class="each-card-link"> -->
+      <div class="each-card" >
+        <div class="card-content">
+          <h5 class="card-title">{{p.title}}</h5>
+          <hr class="line">
+          <p class="card-text">
+            {{p.post_description|safe|truncatechars:150}}...
+          </p>
+          <a href="/home/{{p.url}}" class="read-btn">Read More</a>
+          <div class="card-footer"><i><b>Posted On</b> {{p.post_time}}</i></div>
+        </div>
+        <div class="image-container">
+          <img
+            src="/media/{{p.image}}"
+            class="image-card"
+            style="width: 100%; height: 150px"
+            alt="..."
+          />
+        </div>
+      </div>
+    <!-- </a> -->
+      {% endfor %}
+    </div>
+    <div class="category-container">
+      <div class="caregory-list">
+        <h4>Categories</h4>
+        <hr />
+        <div class="button-container">
+          {% for c in categories %}
+          <a
+            class="btn cat-button p-lg-2 p-md-1"
+            href="/category/{{c.url}}"
+            >{{c.title}}</a
+          >
+          {% endfor %}
+          <a
+            class="btn cat-button p-lg-2 p-md-1"
+            href="/categorypage"
+            >View All &#8594</a
+          >
+          <!-- <div class="view-all"><a href="/categorypage">View All..</a></div> -->
+        </div>
+        <hr />
+        <h4>Recent Posts</h4>
+        <hr />
+        <ul class="recent-list">
+          {% for p in recent_posts|slice:":6" %}
+          <li class="recent-list-item">
+            <a href="/home/{{p.url}}">{{p.title}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

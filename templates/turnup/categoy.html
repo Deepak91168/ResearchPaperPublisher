@@ -1,0 +1,39 @@
+{% extends 'turnup/base.html' %}
+{%block title%}TurnUp | Home{% endblock %}
+{%block Content%}
+
+<div class="container-xxl ">
+    <div class="container-fluid m-0 p-0 "">
+        <h2 class="contaienr-fluid p-0" style="margin-top:8rem;text-align:center;">{{cat.title}}</h2>
+        <div>
+            <div class="category-cards p-0" style="width:100% ;">
+                <div class="row p-0">
+                  <div class="col-md-4">
+                    <img src="/media/{{cat.image}}" class="card-img" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <p class="card-text">{{cat.description | safe}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    <div class="container-xxl p-0" >
+        {% for p in posts %}
+        <div class="list-group mt-2" style="max-width: 75%; margin: auto;height: auto;border:1px solid black">
+            <a href="/home/{{p.url}}" class="list-group-item list-group-item-action " aria-current="true">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><b>{{p.title}}</b></h5>
+                <small>{{p.post_date}}</small>
+              </div>
+              <p class="mb-1" style="font-size:0.85rem ;">{{p.post_description|slice:200}} ....</p>
+            </a>
+          </div>
+          {% endfor %}
+    </div>
+</div>
+
+    
+{%endblock%}

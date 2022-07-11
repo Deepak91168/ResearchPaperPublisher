@@ -1,0 +1,32 @@
+{% extends 'turnup/base.html' %}
+{%block title%}TurnUp | Home{% endblock %}
+{%block Content%}
+
+<div class="container mt-0 paper-flex" ">
+    <div class="post-wrapper">
+    <div class="post-title-content">
+        <div class="title-info">
+            <div class="post-title container">{{single_post.title}}</div>
+            <div class="post-category container">{{single_post.cat}}</div>
+        </div>
+        <div class="post-info">
+            <div class="post-date">{{single_post.post_time}}</div>
+            <div class="post-author">Author: {{single_post.post_author}}</div>
+        </div>
+    </div>
+    <div class="post-content container mt-4">{{single_post.content | safe}}</div>
+    <button class="btn tox-button--naked container download-btn"><a href="/media/{{single_post.file}}" attributes-list download ="file" class="download-link">Download &#8595;</a></button>
+</div>
+<div class="related-posts">
+    <div class="related-posts-list">
+    <h4>Related Posts</h4>
+        <hr />
+        <ul class="recent-list">
+            {% for r in related_posts %}
+            <li class="recent-list-item"><a href="/home/{{r.url}}">{{r.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</div>
+{%endblock%}

@@ -1,0 +1,26 @@
+{% extends 'turnup/base.html' %}
+{%block title%}TurnUp | Home{% endblock %}
+{%block Content%}
+<div class="container-lg" style="margin-top: 6rem;">
+    {% for c in categories %}
+    <div class="container">
+    <div class="card mb-2 allcatcard">
+        <div class="row ">
+          <div class="col-md-4">
+            <img src="/media/{{c.image}}" class="card-img" style="max-height:auto;" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title-all">{{c.title}}</h5>
+              <p class="card-text-all">{{c.description | safe | slice:":200" }}</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <a href="/category/{{c.url}}" class="btn btn-outline-dark">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div> 
+</div>
+{%endblock%}
