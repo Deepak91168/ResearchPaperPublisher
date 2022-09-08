@@ -10,5 +10,4 @@ urlpatterns = [
     path("home/<slug:url>",views.paper),
     path("categorypage/",views.categorypage),
     path("category/<slug:url>",views.category),
-
 ]

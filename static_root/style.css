@@ -1,0 +1,472 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Lora:wght@700&family=Poppins&family=Roboto:wght@900&display=swap");
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo-font {
+    font-family: "Handlee", cursive;
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+}
+
+.index-flex {
+    display: flex;
+}
+
+.post-container {
+    border: 1px solid rgb(255, 255, 255);
+    max-width: 1000px;
+}
+
+.title-info {
+    width: 100%;
+}
+
+.post-category {
+    margin-left: 0.25rem;
+}
+
+.post-title-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    border-bottom: 1px solid black;
+}
+
+.post-content p {
+    font-size: 0.9rem;
+}
+
+.post-wrapper {
+    border: 2px solid black;
+    margin-top: 8rem;
+    padding: 2rem;
+    margin-bottom: 4rem;
+    width: 65%;
+}
+
+.related-posts {
+    margin-top: 8rem;
+    margin-left: 5rem;
+    height: 100vh;
+}
+
+.related-posts-list {
+    position: fixed;
+}
+
+.post-title {
+    font-size: 2.25rem;
+    font-weight: bolder;
+}
+
+.post-date {
+    font-size: 0.9rem;
+}
+
+.post-author {
+    font-size: 0.9rem;
+}
+
+.post-info {
+    width: 100%;
+    padding: 0.1rem;
+    text-align: end;
+}
+
+.download-link {
+    text-decoration: none;
+    color: black;
+    width: 100%;
+}
+
+.download-btn {
+    margin-bottom: 0.3rem;
+    border: 0.5px solid black;
+}
+
+.download-btn:hover {
+    border: 2px solid black;
+    transition: 3ms ease-in-out;
+}
+
+.read-btn {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.2rem 0.2rem 0rem;
+}
+
+.read-btn:hover {
+    color: rgb(36, 1, 160);
+}
+
+.banner-section {
+    height: 20vh;
+    margin-top: 0rem;
+    width: 100%;
+    z-index: 99;
+    position: fixed;
+    background: black;
+}
+
+.card-container {
+    margin-top: 12rem;
+    margin-bottom: 4rem;
+    width: 70%;
+    padding: 0.4rem;
+    overflow: hidden;
+}
+
+.card-text {
+    text-decoration: none;
+    overflow-x: hidden;
+    max-width: 100%;
+    font-size: 0.9rem;
+    color: rgb(70, 70, 75);
+}
+
+.card-title {
+    padding-top: 00.3rem;
+    padding-bottom: 00.3rem;
+    font-weight: bolder;
+}
+
+.card-footer {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.each-card-link {
+    text-decoration: none;
+    color: black;
+}
+
+.each-card-link:hover {
+    color: black;
+}
+
+.each-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    border: 1px solid black;
+    width: 90%;
+    padding-left: 0.4rem;
+    border-radius: 4px;
+}
+
+.each-card:hover {
+    cursor: pointer;
+}
+
+.card-content {
+    max-width: 60%;
+    padding: 0.5rem 0.4rem 0.4rem 0.4rem;
+    margin-right: 0.2rem;
+    width: 100%;
+}
+
+.line {
+    max-width: 80%;
+    color: rgb(0, 0, 0);
+    padding: 0;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+.image-container {
+    min-width: 40%;
+    height: 100%;
+}
+
+.image-card {
+    height: 100%;
+    width: 100%;
+}
+
+.category-container {
+    width: 30%;
+    margin-top: 8rem;
+    z-index: 4;
+    display: flex;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+.view-all {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.view-all a {
+    text-decoration: none;
+    color: black;
+}
+
+.caregory-list {
+    margin-top: 6rem;
+    margin-left: 3rem;
+    width: 20%;
+    display: inline;
+    position: fixed;
+}
+
+.button-container {
+    padding: 0.2rem;
+}
+
+.cat-button {
+    padding: 0.2rem;
+    margin: 0.3rem;
+    font-size: 0.8rem;
+    color: rgb(70, 68, 68);
+    outline: 0.5px solid black;
+    border-radius: 3px;
+}
+
+.cat-button:hover {
+    transition: 0.3 ease-in-out;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+
+.recent-list {
+    padding: 0.3rem;
+    margin: 0.3rem;
+    list-style: none;
+}
+
+.recent-list-item a {
+    text-decoration: none;
+    color: rgb(87, 85, 85);
+    padding-top: 0.3rem;
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
+.recent-list-item a:hover {
+    transition: 0.3s ease-in-out;
+    color: black;
+    transition: 0.2s ease-in-out;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.image-cat {
+    width: 100%;
+}
+
+.image-cat img {
+    max-width: 100%;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.paper-flex {
+    display: flex;
+}
+
+.category-cards {
+    max-width: 75%;
+    margin: auto;
+    height: auto;
+    border: 1px solid black;
+}
+
+.post-category {
+    font-style: italic;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+    margin-top: 0;
+}
+
+.allcatcard {
+    width: 75%;
+    margin: auto;
+    height: auto;
+    border: 1px solid black;
+}
+
+.card-title-all {
+    /* font-size: 1rem; */
+    font-weight: bold;
+}
+
+/* @media (min-width: 768px) and (max-width: 990px){
+  .paper-flex{
+    width: 100%;
+  }
+} */
+@media (min-width: 990px) and (max-width: 1024px) {
+    .post-wrapper {
+        width: 70%;
+    }
+
+    .related-posts {
+        margin-left: 4rem;
+    }
+
+    .allcatcard {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .paper-flex {
+        display: block;
+    }
+
+    .post-wrapper {
+        width: 100%;
+    }
+
+    .related-posts {
+        margin: 0;
+        padding: 0;
+    }
+
+    .related-posts {
+        height: auto;
+    }
+
+    .related-posts-list {
+        position: sticky;
+    }
+
+    .index-flex {
+        display: block;
+    }
+
+    .category-container {
+        display: flex;
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
+
+    .caregory-list {
+        position: sticky;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .button-container {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .each-card {
+        width: 100%;
+    }
+
+    .card-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .post-title {
+        font-size: 1.75rem;
+    }
+
+    .post-date {
+        font-size: 0.75rem;
+    }
+
+    .post-author {
+        font-size: 0.75rem;
+    }
+
+    .post-content p {
+        font-size: 0.8rem;
+    }
+
+    .post-category {
+        font-size: 0.625rem;
+        margin-top: 0rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .post-wrapper {
+        margin-top: 5rem;
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .cat-cards {
+        width: 100%;
+    }
+
+    .download-link {
+        font-size: 0.9rem;
+    }
+
+    .allcatcard {
+        width: 100%;
+    }
+
+    .card-title-all {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .card-text-all {
+        font-size: 0.85rem;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .post-date {
+        font-size: 0.65rem;
+    }
+
+    .post-author {
+        font-size: 0.65rem;
+    }
+
+    .post-title {
+        font-size: 1.25rem;
+    }
+
+    .post-category {
+        font-size: 0.6rem;
+        margin-top: 0rem;
+        margin-bottom: 0.1rem;
+    }
+
+    .post-wrapper {
+        margin-top: 4.5rem;
+        padding: 0.5rem;
+    }
+
+    .category-cards {
+        width: 100%;
+    }
+
+    .download-link {
+        font-size: 0.8rem;
+    }
+
+    .allcatcard {
+        width: 100%;
+        padding: 0.2rem;
+    }
+
+    .card-title-all {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .card-text-all {
+        font-size: 0.85rem;
+    }
+}
