@@ -16,6 +16,11 @@
         <input type="password" name="password" placeholder="Create password"><br>
         <input type="password" name="cpassword" placeholder="Confirm password"><br>
         <button type="submit">Register</button>
+        <div>
+            {% for message in messages %}
+            <h4>{{message}}</h4>
+            {% endfor %}
+        </div>
     </form>
 </body>
 </html>

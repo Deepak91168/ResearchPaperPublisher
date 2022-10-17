@@ -7,7 +7,7 @@ from django.conf import settings
 urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('', include('home.urls')),
-    path('accounts/',include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
     re_path(r'^media/(?P<path>.*)$', serve,
             {'document_root': settings.MEDIA_ROOT}),

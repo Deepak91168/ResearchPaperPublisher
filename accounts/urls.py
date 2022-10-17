@@ -5,7 +5,4 @@ from django.views.static import serve
 from django.conf import settings
 from accounts import views
 
-urlpatterns = [
-    path("register", views.register, name="register")
-]
-
+urlpatterns = [path("register", views.register)]
