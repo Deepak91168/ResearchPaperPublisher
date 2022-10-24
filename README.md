@@ -35,7 +35,7 @@ A Web App for the publishing of the Research Papers all over the World.
 - Install the required Dependencies
 
 ```bash
- pip install requirement.txt
+ pip install -r requirement.txt
 ```
 
 - Migrate all the database
@@ -49,6 +49,12 @@ A Web App for the publishing of the Research Papers all over the World.
 ```bash
  python manage.py runserver
 ```
+- If running with DEBUG=FALSE, then
+
+```bash
+python manage.py collectstatic
+```
+
 
 ## Contributing
 
