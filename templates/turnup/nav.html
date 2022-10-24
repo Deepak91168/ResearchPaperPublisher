@@ -1,11 +1,11 @@
-
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top" style=" width:100%;">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top" style="width: 100%">
   <div class="container">
     <a class="navbar-brand" href="/home">
       <!-- <img src="/turnup/media/images/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> -->
       TurnUp
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -14,23 +14,46 @@
           <a class="nav-link active" aria-current="page" href="/home">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/about">About</a>
-          </li>
+          <a class="nav-link active" aria-current="page" href="/about">About</a>
+        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Categories
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-          {% for c in categories %}
-          <li><a class="dropdown-item" href="/category/{{c.url}}">{{c.title}}</a></li>
-          {% endfor %}
+            {% for c in categories %}
+            <li>
+              <a class="dropdown-item" href="/category/{{c.url}}">{{c.title}}</a>
+            </li>
+            {% endfor %}
           </ul>
         </li>
       </ul>
-      {% comment %} <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-primary" type="submit" style="border:1px solid white;">Search</button>
-      </form> {% endcomment %}
+      {% if user.is_authenticated %}
+      <div class="d-flex" role="search">
+        <a href="{% url 'account_logout' %}">
+          <button class="btn btn-primary" type="submit" style="margin-left: 10px; border: 1px solid white">
+           logout 
+          </button>
+        </a>
+      </div>
+      {% else %}
+      <div class="d-flex" role="search">
+        <a href="{% url 'account_login' %}">
+          <button class="btn btn-primary" type="submit" style="margin-left: 10px; border: 1px solid white">
+            Login
+          </button>
+        </a>
+
+        <br />
+        <a href="{% url 'account_signup' %}">
+          <button class="btn btn-primary" type="submit" style="margin-left: 10px; border: 1px solid white">
+            Sign up
+          </button>
+        </a>
+      </div>
+      {% endif %}
     </div>
   </div>
 </nav>
