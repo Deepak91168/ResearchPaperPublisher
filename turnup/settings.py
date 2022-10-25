@@ -18,9 +18,11 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'tinymce',
-    'accounts',
     'home.apps.HomeConfig',
     'jazzmin',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,14 +41,24 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend")
+
 ROOT_URLCONF = 'turnup.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-      #  'DIRS': ['templates'],
-        'DIRS': [os.path.join(BASE_DIR, "templates")], 
-        'APP_DIRS': True,
+        'BACKEND':
+        'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, "templates"),
+            os.path.join(BASE_DIR, "templates", "accounts", "jazzmin")
+        ],
+        'APP_DIRS':
+        True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -118,42 +130,73 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_ID')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PW')
+
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_ID')
+
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/accounts/login'
+ACCOUNT_ADAPTER = 'home.adapters.BackgroundEmailSendingAccountAdapter'
+
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "TurnUp Admin",
+    "site_title":
+    "TurnUp Admin",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "TurnUp Admin",
+    "site_header":
+    "TurnUp Admin",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "TurnUp Admin",
+    "site_brand":
+    "TurnUp Admin",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
     #"site_logo": "books/img/logo.png",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": None,
+    "login_logo":
+    None,
 
     # Logo to use for login form in dark themes (defaults to login_logo)
-    "login_logo_dark": None,
+    "login_logo_dark":
+    None,
 
     # CSS classes that are applied to the logo above
-    "site_logo_classes": "img-circle",
+    "site_logo_classes":
+    "img-circle",
 
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": None,
+    "site_icon":
+    None,
 
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to the library",
+    "welcome_sign":
+    "Welcome to the library",
 
     # Copyright on the footer
-    "copyright": "TurnUp Ltd",
+    "copyright":
+    "TurnUp Ltd",
 
     # The model admin to search from the search bar, search bar omitted if excluded
-    "search_model": "auth.User",
+    "search_model":
+    "auth.User",
 
     # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
-    "user_avatar": None,
+    "user_avatar":
+    None,
 
     ############
     # Top Menu #
@@ -163,16 +206,28 @@ JAZZMIN_SETTINGS = {
     "topmenu_links": [
 
         # Url that gets reversed (Permissions can be added)
-        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+        {
+            "name": "Home",
+            "url": "admin:index",
+            "permissions": ["auth.view_user"]
+        },
 
         # external url that opens in a new window (Permissions can be added)
-        {"name": "Category", "url": "admin.home.", "new_window": True},
+        {
+            "name": "Category",
+            "url": "admin.home.",
+            "new_window": True
+        },
 
         # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
+        {
+            "model": "auth.User"
+        },
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "books"},
+        {
+            "app": "books"
+        },
     ],
 
     #############
@@ -180,20 +235,25 @@ JAZZMIN_SETTINGS = {
     #############
 
     # Additional links to include in the user menu on the top right ("app" url type is not allowed)
-    "usermenu_links": [
-        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
-        {"model": "auth.user"}
-    ],
+    "usermenu_links": [{
+        "name": "Support",
+        "url": "https://github.com/farridav/django-jazzmin/issues",
+        "new_window": True
+    }, {
+        "model": "auth.user"
+    }],
 
     #############
     # Side Menu #
     #############
 
     # Whether to display the side menu
-    "show_sidebar": True,
+    "show_sidebar":
+    True,
 
     # Whether to aut expand the menu
-    "navigation_expanded": True,
+    "navigation_expanded":
+    True,
 
     # Hide these apps when generating side menu e.g (auth)
     "hide_apps": [],
@@ -207,8 +267,8 @@ JAZZMIN_SETTINGS = {
     # Custom links to append to app groups, keyed on app name
     "custom_links": {
         "books": [{
-            "name": "Make Messages", 
-            "url": "make_messages", 
+            "name": "Make Messages",
+            "url": "make_messages",
             "icon": "fas fa-comments",
             "permissions": ["books.view_book"]
         }]
@@ -222,23 +282,29 @@ JAZZMIN_SETTINGS = {
         "auth.Group": "fas fa-users",
     },
     # Icons that are used when one is not manually specified
-    "default_icon_parents": "fas fa-chevron-circle-right",
-    "default_icon_children": "fas fa-circle",
+    "default_icon_parents":
+    "fas fa-chevron-circle-right",
+    "default_icon_children":
+    "fas fa-circle",
 
     #################
     # Related Modal #
     #################
     # Use modals instead of popups
-    "related_modal_active": True,
+    "related_modal_active":
+    True,
 
     #############
     # UI Tweaks #
     #############
     # Relative paths to custom CSS/JS scripts (must be present in static files)
-    "custom_css": None,
-    "custom_js": None,
+    "custom_css":
+    None,
+    "custom_js":
+    None,
     # Whether to show the UI customizer on the sidebar
-    "show_ui_builder": False,
+    "show_ui_builder":
+    False,
 
     ###############
     # Change view #
@@ -249,7 +315,11 @@ JAZZMIN_SETTINGS = {
     # - vertical_tabs
     # - collapsible
     # - carousel
-    "changeform_format": "horizontal_tabs",
+    "changeform_format":
+    "horizontal_tabs",
     # override change forms on a per modeladmin basis
-    "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
+    "changeform_format_overrides": {
+        "auth.user": "collapsible",
+        "auth.group": "vertical_tabs"
+    },
 }
