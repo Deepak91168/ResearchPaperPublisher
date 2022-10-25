@@ -1,4 +1,4 @@
-# TurnUp- Research Paper Publisher
+# TurnUp - Research Paper Publisher
 
 A Web App for the publishing of the Research Papers all over the World.
 
