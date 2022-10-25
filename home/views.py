@@ -4,6 +4,7 @@ from django.utils import timezone
 from home.models import Posts, Category
 from django.contrib.auth.forms import UserCreationForm
 
+
 def home(request):
     papers = Posts.objects.all().order_by('-post_time')
     categories = Category.objects.all()
@@ -17,7 +18,8 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'turnup/about.html')
+    categories = Category.objects.all()
+    return render(request, 'turnup/about.html', {'categories': categories})
 
 
 def paper(request, url):
@@ -25,17 +27,23 @@ def paper(request, url):
     related_posts = Posts.objects.filter(cat=single_post.cat).exclude(url=url)
     categories = Category.objects.all()
 
-    return render(request, 'turnup/paper.html', {
-        'single_post': single_post,
-        'categories': categories,
-        'related_posts':related_posts
-    })
+    return render(
+        request, 'turnup/paper.html', {
+            'single_post': single_post,
+            'categories': categories,
+            'related_posts': related_posts
+        })
 
 
 def category(request, url):
     cat = Category.objects.get(url=url)
+    categories = Category.objects.all()
     posts = Posts.objects.filter(cat=cat)
-    return render(request, 'turnup/categoy.html', {'cat': cat, 'posts': posts})
+    return render(request, 'turnup/categoy.html', {
+        'cat': cat,
+        'categories': categories,
+        'posts': posts
+    })
 
 
 def categorypage(request):
@@ -44,10 +52,12 @@ def categorypage(request):
     cat_Data = {'papers': papers, 'categories': categories}
     return render(request, 'turnup/allcategory.html', cat_Data)
 
+
 def loginpage(request):
-    return render(request,'turnup/login.html')
+    return render(request, 'turnup/login.html')
+
 
 def registerpage(request):
-    form  = UserCreationForm()
+    form = UserCreationForm()
     context = {'form': form}
-    return render(request,'turnup/register.html',context)
+    return render(request, 'turnup/register.html', context)
