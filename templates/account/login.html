@@ -36,6 +36,7 @@ for a {{ site_name }} account and login below:{% endblocktrans %}</p> {% endcomm
   <div class="col-md-5 p-5 shadow-sm border rounded-5 border-bg-black bg-white">
     <h2 class="text-center mb-4 text-primary">{% trans "Login" %}</h2>
 <form method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
   {% if form.errors %}
 {% for field in form %}
     {% for error in field.errors %}

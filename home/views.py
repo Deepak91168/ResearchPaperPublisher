@@ -15,13 +15,10 @@ def home(request):
         'categories': categories,
         'recent_posts': recent_posts
     }
-    print(request.user.is_authenticated)
-    print(request.get_host())
-    if not request.user.is_authenticated:
-        return render(request,'accounts_login')
-    else:
+    if request.user.is_authenticated:
         return render(request, 'turnup/index.html', paper_Data)
-        
+    else:
+        return redirect('account_login')
 
 
 def about(request):
@@ -58,4 +55,3 @@ def categorypage(request):
     papers = Posts.objects.all()
     cat_Data = {'papers': papers, 'categories': categories}
     return render(request, 'turnup/allcategory.html', cat_Data)
-
