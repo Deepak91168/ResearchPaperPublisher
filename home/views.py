@@ -1,4 +1,5 @@
-from django.shortcuts import render
+import site
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.utils import timezone
 from home.models import Posts, Category
@@ -14,7 +15,13 @@ def home(request):
         'categories': categories,
         'recent_posts': recent_posts
     }
-    return render(request, 'turnup/index.html', paper_Data)
+    print(request.user.is_authenticated)
+    print(request.get_host())
+    if not request.user.is_authenticated:
+        return render(request,'accounts_login')
+    else:
+        return render(request, 'turnup/index.html', paper_Data)
+        
 
 
 def about(request):
@@ -52,12 +59,3 @@ def categorypage(request):
     cat_Data = {'papers': papers, 'categories': categories}
     return render(request, 'turnup/allcategory.html', cat_Data)
 
-
-def loginpage(request):
-    return render(request, 'turnup/login.html')
-
-
-def registerpage(request):
-    form = UserCreationForm()
-    context = {'form': form}
-    return render(request, 'turnup/register.html', context)

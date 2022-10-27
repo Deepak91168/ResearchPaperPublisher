@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.authNav{
+    background: black;
+    width: 100%;
+    height: 100px;
+    border: 1px solid blue;
+}
+.authContainer{
+    margin: auto;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.inputSignUp{
+    border: 1px solid black;
+    width: 100%;
+}
+.loginContainer{
+    border: 1px solid black;
+    /* background: blue; */
+}
+.authMenu{
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    text-decoration: none;
+}

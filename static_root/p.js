@@ -1,1 +1,1 @@
-console.log("Fuck u")
+console.log("Hello world")

@@ -1,5 +1,5 @@
 {% extends "account/base.html" %}
-
+{% load widget_tweaks %}
 {% load i18n %}
 {% load account socialaccount %}
 
@@ -7,16 +7,14 @@
 
 {% block content %}
 
-<h1>{% trans "Sign In" %}</h1>
-
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
+{% comment %} <p>{% blocktrans with site.name as site_name %}Please sign in with one
 of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+for a {{ site_name }} account and login below:{% endblocktrans %}</p> {% endcomment %}
 
-<div class="socialaccount_ballot">
+{% comment %} <div class="socialaccount_ballot">
 
   <ul class="socialaccount_providers">
     {% include "socialaccount/snippets/provider_list.html" with process="login" %}
@@ -24,23 +22,57 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
   <div class="login-or">{% trans 'or' %}</div>
 
-</div>
+</div> 
 
-{% include "socialaccount/snippets/login_extra.html" %}
+{% include "socialaccount/snippets/login_extra.html" %} {% endcomment %}
 
 {% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
+<p>{% blocktrans %}Don't have an account?
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 {% endif %}
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
+
+<div class="vh-100 d-flex justify-content-center align-items-center container">
+  <div class="col-md-5 p-5 shadow-sm border rounded-5 border-bg-black bg-white">
+    <h2 class="text-center mb-4 text-primary">{% trans "Login" %}</h2>
+<form method="POST" action="{% url 'account_login' %}">
+  {% if form.errors %}
+{% for field in form %}
+    {% for error in field.errors %}
+        <div class="alert alert-error">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endfor %}
+{% for error in form.non_field_errors %}
+    <div class="alert alert-error">
+        <strong>{{ error|escape }}</strong>
+    </div>
+{% endfor %}
+{% endif %}
   {% csrf_token %}
-  {{ form.as_p }}
+  {% comment %} {{ form.as_p }} {% endcomment %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    {{form.login|attr:"class:form-control border border-primary"|attr:"placeholder:"}}
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    {{form.password|attr:"class:form-control border border-primary"|attr:"placeholder:"}}
+  </div>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+  <p class="small">
+  <a class="text-primary"  href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></p>
+  <div class="d-grid">
+  <button class="btn btn-primary" type="submit">{% trans "Login" %}</button>
+  </div>
+  <div class="mt-3">
+    <p class="mb-0  text-center">Don't have an account? <a href="{{ signup_url }}" class="text-primary fw-bold">Sign Up</a></p>
+  </div>
 </form>
-
+</div>
+</div>
 {% endblock %}
+
