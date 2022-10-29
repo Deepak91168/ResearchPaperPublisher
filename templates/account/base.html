@@ -19,7 +19,8 @@
         ></script>
     </head>
     <body>
-        {% block body %} {% if messages %}
+        {% block body %} 
+        {% if messages %}
         <div>
             <strong>Messages:</strong>
             <ul>
@@ -28,7 +29,7 @@
                 {% endfor %}
             </ul>
         </div>
-        {% endif %}
+        {% endif %} 
         {% comment %} <div class="authMenu">
             <strong>Menu:</strong>
             <ul>

@@ -1,4 +1,3 @@
-import site
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.utils import timezone
@@ -18,7 +17,7 @@ def home(request):
     print(request.user.is_authenticated)
     print(request.get_host())
     if not request.user.is_authenticated:
-        return render(request,'accounts_login')
+        return redirect('account_login')
     else:
         return render(request, 'turnup/index.html', paper_Data)
         
