@@ -33,20 +33,20 @@ for a {{ site_name }} account and login below:{% endblocktrans %}</p> {% endcomm
 
 
 <div class="vh-100 d-flex justify-content-center align-items-center container">
-  <div class="col-md-5 p-5 shadow-sm border rounded-5 border-bg-black bg-white">
-    <h2 class="text-center mb-4 text-primary">{% trans "Login" %}</h2>
+  <div class="col-md-5 p-5 shadow-sm border rounded-5 border-bg-dark bg-white">
+    <h2 class="text-center mb-4 text-dark-mode">{% trans "Login" %}</h2>
 <form method="POST" action="{% url 'account_login' %}">
-  {% if form.errors %}
+{% if form.errors %}
 {% for field in form %}
     {% for error in field.errors %}
-        <div class="alert alert-error">
-            <strong>{{ error|escape }}</strong>
+        <div class="small alert alert-dark">
+            {{ error|escape }}
         </div>
     {% endfor %}
 {% endfor %}
 {% for error in form.non_field_errors %}
-    <div class="alert alert-error">
-        <strong>{{ error|escape }}</strong>
+    <div class="small alert alert-dark">
+        {{ error|escape }}
     </div>
 {% endfor %}
 {% endif %}
@@ -54,22 +54,22 @@ for a {{ site_name }} account and login below:{% endblocktrans %}</p> {% endcomm
   {% comment %} {{ form.as_p }} {% endcomment %}
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
-    {{form.login|attr:"class:form-control border border-primary"|attr:"placeholder:"}}
+    {{form.login|attr:"class:form-control border border-dark"|attr:"placeholder:"}}
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    {{form.password|attr:"class:form-control border border-primary"|attr:"placeholder:"}}
+    {{form.password|attr:"class:form-control border border-dark"|attr:"placeholder:"}}
   </div>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
   <p class="small">
-  <a class="text-primary"  href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></p>
+  <a class="text-dark"  href="{% url 'account_reset_password' %}">Forgot Password?</a></p>
   <div class="d-grid">
-  <button class="btn btn-primary" type="submit">{% trans "Login" %}</button>
+  <button class="btn btn-dark" type="submit">{% trans "Login" %}</button>
   </div>
   <div class="mt-3">
-    <p class="mb-0  text-center">Don't have an account? <a href="{{ signup_url }}" class="text-primary fw-bold">Sign Up</a></p>
+    <p class="mb-0  text-center">Don't have an account? <a href="{{ signup_url }}" class="text-black fw-bold">Sign Up</a></p>
   </div>
 </form>
 </div>

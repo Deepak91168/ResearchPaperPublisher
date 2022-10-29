@@ -34,3 +34,6 @@
     list-style: none;
     text-decoration: none;
 }
+.signoutmsg{
+    border: 2px solid black;
+}
