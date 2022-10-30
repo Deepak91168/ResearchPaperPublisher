@@ -8,7 +8,7 @@
 {% block content %}
 
 {% get_providers as socialaccount_providers %}
-
+{% comment %} http://127.0.0.1:8000/accounts/google/login/?process=login {% endcomment %}
 {% if socialaccount_providers %}
 {% comment %} <p>{% blocktrans with site.name as site_name %}Please sign in with one
 of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
@@ -17,14 +17,14 @@ for a {{ site_name }} account and login below:{% endblocktrans %}</p> {% endcomm
 {% comment %} <div class="socialaccount_ballot">
 
   <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+    {% comment %} <a href="http://127.0.0.1:8000/accounts/google/login/?process=login">***********</a> {% endcomment %}
+    {% comment %} {% include "socialaccount/snippets/provider_list.html" with process="login" %} {% endcomment %}
   </ul>
-
-  <div class="login-or">{% trans 'or' %}</div>
+  {% comment %} <div class="login-or">{% trans 'or' %}</div> {% endcomment %}
 
 </div> 
 
-{% include "socialaccount/snippets/login_extra.html" %} {% endcomment %}
+{% comment %} {% include "socialaccount/snippets/login_extra.html" %} {% endcomment %}
 
 {% else %}
 <p>{% blocktrans %}Don't have an account?
@@ -36,6 +36,7 @@ for a {{ site_name }} account and login below:{% endblocktrans %}</p> {% endcomm
   <div class="col-md-5 p-5 shadow-sm border rounded-5 border-bg-dark bg-white">
     <h2 class="text-center mb-4 text-dark-mode">{% trans "Login" %}</h2>
 <form method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
 {% if form.errors %}
 {% for field in form %}
     {% for error in field.errors %}
@@ -50,7 +51,6 @@ for a {{ site_name }} account and login below:{% endblocktrans %}</p> {% endcomm
     </div>
 {% endfor %}
 {% endif %}
-  {% csrf_token %}
   {% comment %} {{ form.as_p }} {% endcomment %}
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
