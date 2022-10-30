@@ -8,6 +8,7 @@
   <div class="col-md-5 p-5 shadow-sm border rounded-5 border-bg-dark bg-white">
 <h2 class="text-center mb-4 text-dark-mode">{% trans "Sign Up" %}</h2>
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
   {% if form.errors %}
   {% for field in form %}
   {% for error in field.errors %}
@@ -17,8 +18,8 @@
   {% endfor %}
   {% endfor %}
   {% endif %}
-  {% csrf_token %}
   {% comment %} {{ form }} {% endcomment %}
+  {% comment %} First Name and Last Name {% endcomment %}
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     {{form.email|attr:"class:form-control border border-dark"|attr:"placeholder:"}}
