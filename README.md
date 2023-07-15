@@ -1,10 +1,12 @@
 # TurnUp - Research Paper Publisher
 
-A Web App for the publishing of the Research Papers all over the World.
+A web app deployed over pythonanywhere allowing admins to upload research papers with custom categories. Users can easily filter, view, and download papers by category, enhancing accessibility and convenience.
 
 ## 🛠 Tech Stack
 
 ![html](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white) ![css](https://img.shields.io/badge/CSS-FF2D20?&style=for-the-badge&logo=css3&logoColor=white) ![js](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![python](https://img.shields.io/badge/Python-217346?style=for-the-badge&logo=python&logoColor=white) ![django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white) ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white) ![SQLITE](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
+[![PythonAnywhere Badge](https://img.shields.io/badge/-PythonAnywhere-%231FADDA?style=for-the-badge&logo=python&logoColor=white)](#)
+
 
 ## Installation
 
@@ -54,13 +56,17 @@ A Web App for the publishing of the Research Papers all over the World.
 ```bash
 python manage.py collectstatic
 ```
+## Screenshot
 
+Working Project will look like this!
+
+![App Screenshot](https://imgur.com/QbqMtgA.png)
 
 ## Contributing
 
-Can work upon the [issues](https://github.com/Deepak91168/ResearchPaperPublisher/issues) mentioned and
+Contributions are always welcome :)
 
-Contributions are always welcome!
+Can work upon the [issues](https://github.com/Deepak91168/ResearchPaperPublisher/issues) mentioned and
 
 1. Fork the Repository
 2. Create your featureBranch.
@@ -68,16 +74,11 @@ Contributions are always welcome!
 4. Push to the branch (`git push origin feature/amazingFeature`)
 5. Open up a Pull Request.
 
-## Screenshots
-
-Working Project will look like this!
-
-![App Screenshot](https://imgur.com/QbqMtgA.png)
-
 ## References
-
-Since the Backend of the Project is on Django-Framework, so you can refer its documentation here!
-
 ````
-https://docs.djangoproject.com/en/4.1/
+# Django
+  https://docs.djangoproject.com/en/4.1/
+
+# Pythonanywhere
+  https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
 ````
