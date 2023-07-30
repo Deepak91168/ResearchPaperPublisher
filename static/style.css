@@ -285,6 +285,23 @@
   border: 1px solid black;
 }
 
+ .category-cards .row {
+  justify-content: center; 
+} 
+
+.category-cards .col-md-4 {
+  display: flex;
+  align-items: stretch; 
+}
+.category-cards .col-md-8 {
+  display: flex;
+  justify-content: center; 
+}
+.category-cards .card-body {
+  display: flex;
+  align-items: center;
+}
+
 .post-category {
   font-style: italic;
   font-size: 0.85rem;
